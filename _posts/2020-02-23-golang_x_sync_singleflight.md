@@ -5,7 +5,7 @@ date: 2020-02-23 12:38:11
 layout: post
 ---
 
-### golang.org/x/sync 一共有四个工具包
+#### golang.org/x/sync 一共有四个工具包
 * singleflight
 > Package singleflight provides a duplicate function call suppression mechanism.   
 * errgroup
@@ -15,7 +15,7 @@ layout: post
 * syncmap
 > Package syncmap provides a concurrent map implementation.
 
-### singleflight: 合并请求
+#### singleflight: 合并请求
 
 > 1. 10个协程同时去查数据库，且查询的数据是一样的吗, 每次查询耗时很长，singleflight包可以屏蔽9次查询，保证只有一次读db；
 > 2. 缓存失效场景，在那一刻会有大量请求穿透到db，singleflight只有一次读db
