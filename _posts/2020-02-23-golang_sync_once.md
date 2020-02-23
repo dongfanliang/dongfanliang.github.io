@@ -8,7 +8,7 @@ layout: post
 ### sync.Once.Do(f func()) 全局只执行一次
 > 无论你是否更换once.Do(xx)这里的方法, 这个sync.Once块只会执行一次;
 
-``` c
+``` GO
 package main
 
 import (
@@ -31,7 +31,7 @@ func onces() {
 ```
 
 ### 源码如下：
-``` c
+``` GO
 // Once is an object that will perform exactly one action.
 type Once struct {
     m    Mutex
