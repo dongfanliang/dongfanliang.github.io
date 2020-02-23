@@ -1,0 +1,37 @@
+sass:
+  style: compressed
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: "assets/img"
+    values:
+      image: true
+
+theme: jekyll-theme-minimalism
+title: Fanliang
+name: Fanliang
+description: keep going ...
+
+github: https://github.com/dongfanliang
+rss: true
+
+plugins:
+  - rouge
+  - kramdown
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jemoji
+
+exclude:
+  - script
+  - docs
+  - vendor
+  - Gemfile
+  - Gemfile.lock
