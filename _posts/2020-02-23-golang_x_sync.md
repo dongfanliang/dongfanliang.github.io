@@ -1,5 +1,5 @@
 ---
-title: golang 之 golang.org/x/sync 包学习
+title: golang 之 golang.org/x/sync
 categories: golang
 date: 2020-02-23 12:38:11
 layout: post
@@ -100,3 +100,81 @@ func (g *Group) Do(key string, fn func() (interface{}, error)) (interface{}, err
 	return c.val, c.err
 }
  ```
+
+#### errgroup: 带有error返回的sync.WaitGroup
+> 开源项目：https://github.com/bilibili/kratos/tree/master/pkg/sync/errgroup  
+> 在errgroup的基础上，又进行了封装
+
+##### 使用示例：
+``` GO
+func Cities(cities ...string) ([]*Info, error) {
+    var g errgroup.Group
+    res := make([]*Info, len(cities))
+
+    for i, city := range cities {
+        i, city := i, city 
+        g.Go(func() error {
+            info, err := City(city)
+            res[i] = info
+            return err
+        })
+	}
+	// 所有的协程都返回nil, err才为nil
+    if err := g.Wait(); err != nil {
+        return nil, err
+    }
+    return res, nil
+}
+```
+##### 核心原理：
+``` GO
+type Group struct {
+	cancel func()
+
+	wg sync.WaitGroup
+
+	errOnce sync.Once
+	err     error
+}
+
+// WithContext returns a new Group and an associated Context derived from ctx.
+//
+// The derived Context is canceled the first time a function passed to Go
+// returns a non-nil error or the first time Wait returns, whichever occurs
+// first.
+func WithContext(ctx context.Context) (*Group, context.Context) {
+	ctx, cancel := context.WithCancel(ctx)
+	return &Group{cancel: cancel}, ctx
+}
+
+// Wait blocks until all function calls from the Go method have returned, then
+// returns the first non-nil error (if any) from them.
+func (g *Group) Wait() error {
+	g.wg.Wait()
+	if g.cancel != nil {
+		g.cancel()
+	}
+	return g.err
+}
+
+// Go calls the given function in a new goroutine.
+//
+// The first call to return a non-nil error cancels the group; its error will be
+// returned by Wait.
+func (g *Group) Go(f func() error) {
+	g.wg.Add(1)
+
+	go func() {
+		defer g.wg.Done()
+
+		if err := f(); err != nil {
+			g.errOnce.Do(func() {
+				g.err = err
+				if g.cancel != nil {
+					g.cancel()
+				}
+			})
+		}
+	}()
+}
+```
