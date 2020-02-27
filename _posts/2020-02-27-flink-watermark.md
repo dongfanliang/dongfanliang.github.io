@@ -89,6 +89,11 @@ class BoundedOutOfOrdernessGenerator extends AssignerWithPeriodicWatermarks[Flin
 }
 ```
 
+参考文章：
+> http://www.whitewood.me/2018/10/28/Flink-Event-Time-%E5%80%BE%E6%96%9C/
+> http://www.liaojiayi.com/flink-watermark/
+
+
 <style>
 table th:first-of-type {
     width: 11%;
