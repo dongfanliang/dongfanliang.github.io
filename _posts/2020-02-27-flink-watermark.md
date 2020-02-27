@@ -13,7 +13,7 @@ layout: post
 ### 一. 串行情况下的watermark
 ##### 测试1:
 - setParallelism(1);      
-- window=10s；flink会自动创建[0, 10], [10, 20], [20, 30], [30, 40], [40, 50], [50, 60]这些窗口，数据会自动进入对应的窗口   
+- window=10s；flink会自动创建[0, 10] ... [50, 60]这些窗口，数据会自动进入对应的窗口   
 - 脚本每10s push一条数据     
 
 eventtime | currentMaxTimestamp |  watermark  |  备注
