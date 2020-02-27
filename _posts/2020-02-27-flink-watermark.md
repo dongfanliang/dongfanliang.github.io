@@ -90,8 +90,9 @@ class BoundedOutOfOrdernessGenerator extends AssignerWithPeriodicWatermarks[Flin
 ```
 
 参考文章：
-> http://www.whitewood.me/2018/10/28/Flink-Event-Time-%E5%80%BE%E6%96%9C/
-> http://www.liaojiayi.com/flink-watermark/
+[Flink Event Time 倾斜](http://www.whitewood.me/2018/10/28/Flink-Event-Time-%E5%80%BE%E6%96%9C/)      
+[Flink中的Watermark](http://www.liaojiayi.com/flink-watermark/)      
+[WaterMark分布式执行理解](https://blog.csdn.net/u013560925/article/details/82499612)     
 
 
 <style>

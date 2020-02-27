@@ -21,7 +21,6 @@ description: keep going ...
 
 github: https://github.com/dongfanliang
 rss: true
-encoding: utf-8
 
 plugins:
   - rouge
@@ -36,3 +35,7 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
+
+webrick:
+  headers:
+    Cache-Control: no-cache
