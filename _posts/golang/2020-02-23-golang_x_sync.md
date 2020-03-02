@@ -2,6 +2,7 @@
 title: golang 之 golang.org/x/sync
 categories: golang
 date: 2020-02-23 12:38:11
+tags: golang
 layout: post
 ---
 

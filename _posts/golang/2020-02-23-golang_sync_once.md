@@ -3,6 +3,7 @@ title: golang 之 sync.Once的用法
 categories: golang
 date: 2020-02-23 12:38:11
 layout: post
+tags: golang
 ---
 
 ### sync.Once.Do(f func()) 全局只执行一次

@@ -3,6 +3,7 @@ title: golang 之 实现lru缓存淘汰策略
 categories: golang
 date: 2020-02-23 12:38:11
 layout: post
+tags: golang
 ---
 #### 常见的缓存淘汰策略 -- FIFO/LFU/LRU
 1. FIFO(First In First Out)
