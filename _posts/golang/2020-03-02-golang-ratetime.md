@@ -43,7 +43,7 @@ false 17
 false 18
 false 19
 ```
-### 令牌桶实方式实现限速
+### 令牌桶方式实现限速
 [golang.org/x/time/rate](https://github.com/golang/time/blob/master/rate/rate.go)
 
 #### 核心思想：如果生成token速率一定，那么**token数** 和 **时间段**可以相互转换；      
@@ -150,7 +150,7 @@ func (lim *Limiter) advance(now time.Time) (newNow time.Time, newLast time.Time,
 // 令牌桶方式， 以golang.org/x/time/rate为基础，提供gin的中间件
 https://github.com/didip/tollbooth
 
-// 经过优化的漏斗方式， 提供最大松弛量等方案
+// 漏斗方式， 经过优化过的，提供最大松弛量减小sleep时间
 https://github.com/uber-go/ratelimit/
 ```
 
