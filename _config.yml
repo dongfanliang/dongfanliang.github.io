@@ -14,7 +14,7 @@ defaults:
     values:
       image: true
 
-theme: jekyll-theme-minimalism
+        # theme: jekyll-theme-minimalism
 title: Fanliang
 name: Fanliang
 description: keep going ...
